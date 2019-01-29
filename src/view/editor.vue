@@ -20,7 +20,7 @@
           initialFrameWidth: null,
           initialFrameHeight: 500,
           BaseUrl: '',
-          UEDITOR_HOME_URL: process.env.NODE_ENV == 'development' ? '/static/ueditor/' : '/editor-qinniu/dist/static/ueditor/',
+          UEDITOR_HOME_URL: process.env.NODE_ENV == 'development' ? '/static/ueditor/' : '/editor-qiniu/dist/static/ueditor/',
         },
       };
     },

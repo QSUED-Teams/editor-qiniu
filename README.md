@@ -38,4 +38,4 @@ npm run build
 
 # 预览
 
-[demo](https://qsued-teams.github.io/editor-qinniu/dist/index.html#/editor)
+[demo](https://qsued-teams.github.io/editor-qiniu/dist/index.html#/editor)
