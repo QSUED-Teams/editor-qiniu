@@ -28,7 +28,6 @@
     methods:{
       init(){
         if(UE.Editor.prototype._bkGetActionUrl === undefined){
-          sessionStorage.setItem("token",token())
           UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
           UE.Editor.prototype.getActionUrl = function(act) {
             //判断路径   这里是config.json 中设置执行上传的action名称
