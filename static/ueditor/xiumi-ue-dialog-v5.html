@@ -37,6 +37,7 @@
     window.addEventListener('message', function (event) {
         if (event.origin == xiumi_url) {
             editor.execCommand('insertHtml', event.data);
+            editor.fireEvent("catchRemoteImage")// 手动执行粘贴动作
             dialog.close();
         }
     }, false);
