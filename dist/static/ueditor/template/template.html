@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>template</title>
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .post-template-box .box-main {
+      margin-top: 30px;
+      padding-left: 37px;
+    }
+
+    .post-template-box .box-main .post-template-li {
+      width: 160px;
+      overflow: hidden;
+      float: left;
+      margin-right: 15px;
+    }
+
+    .post-template-box .box-main .post-template-li .template-list-pic {
+      width: 158px;
+      height: 373px;
+      border: 1px solid #ddd;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .post-template-box .box-main .post-template-li:hover .template-list-pic {
+      border: 1px solid #0099e9;
+    }
+
+    .post-template-box .box-main .post-template-li .template-list-pic img {
+      width: 158px;
+      height: 373px;
+    }
+
+    .post-template-box .box-main .post-template-li .template-list-pic .template-list-title {
+      height: 30px;
+      line-height: 30px;
+      width: 148px;
+      background-color: rgba(0, 0, 0, .5);;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      color: #fff;
+      padding: 0 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      -webkit-text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: center;
+      margin: 0;
+    }
+
+    .post-template-box .box-main .post-template-li .template-list-btn-use {
+      clear: both;
+      display: inline-block;
+      width: 160px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      color: #fff;
+      background-color: #0099e9;
+      border-radius: 3px;
+      float: right;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .post-template-box .box-main .post-template-li .template-list-btn-use:hover {
+      background-color: #0082c5;
+    }
+
+  </style>
+</head>
+<body>
+<div class="post-template-box">
+  <ul class="box-main" id="box-main">
+  </ul>
+</div>
+<script type="text/javascript" src="../dialogs/internal.js"></script>
+<script type="text/javascript" src="data.js"></script>
+<script>
+
+  function encodeUnicode(str) {
+    var res = [];
+    for (var i = 0; i < str.length; i++) {
+      res[i] = ( "00" + str.charCodeAt(i).toString(16) ).slice(-4);
+    }
+    return "\\u" + res.join("\\u");
+  }
+  function decodeUnicode(str) {
+    str = str.replace(/\\/g, "%");
+    return unescape(str);
+  }
+  var html = ''
+  for (var i = 0; i < templates.length; i++) {
+    var item = templates[i]
+    html += '<li class="post-template-li">' +
+      '<div class="template-list-pic">' +
+      '<img class="template-list-img" src="' + item.img + '">' +
+      '<p class="template-list-title">' + item.tit + '</p>' +
+      '</div>' +
+      '<a class="template-list-btn-use" href="javascript:void(0)" onclick="pushNode(\'' + encodeUnicode(item.html) + '\')">使用</a>' +
+      '</li>'
+  }
+  document.getElementById('box-main').innerHTML = html
+  function pushNode(node) {
+    editor.execCommand('insertHtml', decodeUnicode(node));
+    dialog.close();
+  }
+</script>
+</body>
+</html>
